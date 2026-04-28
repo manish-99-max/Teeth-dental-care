@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Teeth Dental Clinic — Best Dentist in Jorhat</title>
+<meta name="description" content="Dr. Teeth Dental Clinic, Jorhat. 4.8★ rated. Best dental clinic in Jorhat. Book: +91 63062 54991">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --nav-h: 70px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; cursor: none; overflow-x: hidden; color: #1a1a1a; }
+  #cursor { width: 8px; height: 8px; background: #c8a96e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+  #cursor-ring { width: 32px; height: 32px; border: 1px solid #c8a96e; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all 0.3s ease; }
+  body:hover #cursor-ring { transform: scale(1.5); opacity: 0.4; }
+  @media (hover: none) { #cursor, #cursor-ring { display: none; } body { cursor: auto; } }
+  nav { position: fixed; top: 0; width: 100%; height: var(--nav-h); display: flex; justify-content: space-between; align-items: center; padding: 0 5%; z-index: 1000; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); transition: 0.3s; }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+  .logo span { display: block; font-size: 0.6rem; font-family: 'Plus Jakarta Sans'; letter-spacing: 0.2em; color: #5c7a6b; font-weight: 500; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: #1a1a1a; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: #c8a96e; transition: 0.3s; }
+  .nav-links a:hover::after { width: 100%; }
+  .btn { background: #c8a96e; color: #1a1a1a; padding: 0.8rem 1.8rem; text-decoration: none; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: 0.3s; display: inline-block; }
+  .btn:hover { background: #dfc090; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,169,110,0.3); }
+  section { min-height: 100vh; padding: 8rem 8% 6rem; display: flex; align-items: center; opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+  section.visible { opacity: 1; transform: translateY(0); }
+  .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .label::before { content: ''; width: 30px; height: 1px; }
+  .title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  .title em { font-style: italic; }
+  .text { font-size: 1rem; line-height: 1.8; font-weight: 300; max-width: 550px; }
+  #hero { background: linear-gradient(135deg, #1a1a1c 0%, #2a2a2c 100%); color: #f5f0e8; }
+  #hero .label { color: #c8a96e; } #hero .label::before { background: #c8a96e; }
+  #hero .title em { color: #dfc090; }
+  #hero .text { color: #b5b5b8; margin-bottom: 2.5rem; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #dfc090; font-weight: 600; }
+  .stat-text { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b5b5b8; }
+  #about { background: #faf8f4; }
+  #about .label { color: #5c7a6b; } #about .label::before { background: #5c7a6b; }
+  #about .title em { color: #5c7a6b; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-img { height: 450px; background: linear-gradient(135deg, #5c7a6b, #3d5449); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 5rem; box-shadow: 0 20px 60px rgba(92,122,107,0.2); }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .feat { background: #f5f0e8; padding: 1.2rem; border-left: 3px solid #5c7a6b; border-radius: 2px; }
+  .feat h4 { font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: 600; }
+  .feat p { font-size: 0.8rem; color: #6b6b6e; line-height: 1.5; }
+  #services { background: #e8f5f1; }
+  #services .label { color: #3d5449; } #services .label::before { background: #3d5449; }
+  #services .title em { color: #3d5449; }
+  .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .service { background: #fff; padding: 2.5rem 2rem; border-radius: 4px; transition: 0.3s; border-top: 2px solid transparent; }
+  .service:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(92,122,107,0.15); border-top-color: #5c7a6b; }
+  .service-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+  .service h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 600; }
+  .service p { font-size: 0.85rem; color: #6b6b6e; line-height: 1.7; }
+  #testimonials { background: #fff9f0; text-align: center; }
+  #testimonials .label { justify-content: center; color: #c8a96e; }
+  #testimonials .label::before { display: none; }
+  #testimonials .title em { color: #c8a96e; }
+  .rating-box { display: inline-flex; align-items: center; gap: 1rem; background: #c8a96e; color: #1a1a1a; padding: 0.9rem 2rem; border-radius: 50px; margin: 2rem 0 3rem; font-weight: 600; }
+  .stars { color: #1a1a1a; }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; }
+  .test { background: #fff; padding: 2rem; border-radius: 4px; border: 1px solid #f5f0e8; }
+  .test-quote { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #c8a96e; line-height: 0.5; opacity: 0.3; }
+  .test-text { font-style: italic; font-size: 0.9rem; line-height: 1.8; color: #6b6b6e; margin: 1rem 0 1.5rem; }
+  .test-author { display: flex; align-items: center; gap: 0.8rem; }
+  .author-ava { width: 40px; height: 40px; background: #5c7a6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; }
+  .author-name { font-weight: 600; font-size: 0.9rem; }
+  #contact { background: #1a1a1c; color: #f5f0e8; }
+  #contact .label { color: #8aab98; } #contact .label::before { background: #8aab98; }
+  #contact .title em { color: #8aab98; }
+  #contact .text { color: #b5b5b8; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; }
+  .contact-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
+  .contact-icon { width: 45px; height: 45px; background: rgba(138,171,152,0.15); border: 1px solid rgba(138,171,152,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #8aab98; margin-bottom: 0.3rem; font-weight: 600; }
+  .contact-val { font-size: 0.95rem; line-height: 1.6; }
+  .contact-val a { color: #dfc090; text-decoration: none; }
+  .form { background: rgba(255,255,255,0.04); padding: 2.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-label { display: block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #b5b5b8; margin-bottom: 0.5rem; font-weight: 600; }
+  .form-input { width: 100%; padding: 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; color: #f5f0e8; font-family: inherit; }
+  .form-input:focus { outline: none; border-color: #c8a96e; }
+  .whatsapp { position: fixed; bottom: 2rem; right: 2rem; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fff; text-decoration: none; box-shadow: 0 8px 25px rgba(37,211,102,0.4); z-index: 999; animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 8px 35px rgba(37,211,102,0.6); } }
+  footer { background: #141416; padding: 2.5rem; text-align: center; font-size: 0.8rem; color: #9a9a9d; }
+  @media (max-width: 968px) {
+    nav { padding: 0 5%; } .nav-links { display: none; } .hamburger { display: flex; }
+    section { padding: 6rem 5%; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .service-grid, .test-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+  <div id="cursor"></div><div id="cursor-ring"></div>
+  <nav><a href="#" class="logo">Dr. Teeth<span>Dental Clinic</span></a><ul class="nav-links"><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact" class="btn">Book Now</a></li></ul></nav>
+  
+  <section id="hero">
+    <div class="container">
+      <div class="label">Best Dentist in Jorhat</div>
+      <h1 class="title">Your Smile Deserves <em>Expert Care</em></h1>
+      <p class="text">Dr. Teeth Dental Clinic is Jorhat's most trusted dental center. 4.8★ rated with 596 Google reviews. Painless, modern treatments for the whole family.</p>
+      <a href="https://wa.me/916306254991?text=Hi%20Doctor,%20I%20want%20to%20book%20appointment" class="btn">Book on WhatsApp</a>
+      <div class="hero-stats">
+        <div><div class="stat-num">4.8★</div><div class="stat-text">Google Rating</div></div>
+        <div><div class="stat-num">596</div><div class="stat-text">Happy Reviews</div></div>
+        <div><div class="stat-num">15+</div><div class="stat-text">Years in Jorhat</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-img">🦷</div>
+      <div>
+        <div class="label">About Us</div>
+        <h2 class="title">Best Dental Clinic <em>in Jorhat</em></h2>
+        <p class="text">We combine advanced dental technology with gentle, personalized care. Located in the heart of Jorhat, Assam, we make every visit comfortable and stress-free for patients of all ages.</p>
+        <div class="features">
+          <div class="feat"><h4>Painless Treatment</h4><p>Latest anesthesia & laser tech</p></div>
+          <div class="feat"><h4>Hospital-Grade</h4><p>Strict sterilization protocols</p></div>
+          <div class="feat"><h4>Digital X-Ray</h4><p>Low radiation, instant results</p></div>
+          <div class="feat"><h4>EMI Available</h4><p>0% interest payment plans</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="label">Our Services</div>
+      <h2 class="title">Complete <em>Dental Solutions</em></h2>
+      <div class="service-grid">
+        <div class="service"><div class="service-icon">🪥</div><h3>Teeth Cleaning</h3><p>Professional scaling & polishing to remove plaque, prevent gum disease and keep your smile bright.</p></div>
+        <div class="service"><div class="service-icon">😁</div><h3>Dental Implants</h3><p>Permanent titanium implants to replace missing teeth with 98% success rate and natural feel.</p></div>
+        <div class="service"><div class="service-icon">🦷</div><h3>Braces & Orthodontics</h3><p>Metal, ceramic braces and clear aligners to straighten teeth and correct bite issues.</p></div>
+        <div class="service"><div class="service-icon">✨</div><h3>Teeth Whitening</h3><p>In-chair professional whitening for 6-8 shades brighter smile in just 45 minutes.</p></div>
+        <div class="service"><div class="service-icon">🦷</div><h3>Root Canal Treatment</h3><p>Painless single-sitting RCT with rotary instruments to save your natural tooth.</p></div>
+        <div class="service"><div class="service-icon">💎</div><h3>Cosmetic Dentistry</h3><p>Veneers, bonding and smile makeovers to transform your appearance and confidence.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="label">Patient Reviews</div>
+      <h2 class="title">What Jorhat <em>Says About Us</em></h2>
+      <div class="rating-box"><div class="stars">★★★★★</div> 4.8 on Google • 596 Reviews</div>
+      <div class="test-grid">
+        <div class="test"><div class="test-quote">“</div><p class="test-text">Best dentist in Jorhat! Painless RCT and very friendly doctor. Clinic is super clean. Highly recommend Dr. Teeth!</p><div class="test-author"><div class="author-ava">R</div><div><div class="author-name">Ritika Sharma</div></div></div></div>
+        <div class="test"><div class="test-quote">“</div><p class="test-text">Got my teeth whitening done. Results are amazing! Staff is professional and explained everything clearly. Worth it.</p><div class="test-author"><div class="author-ava">A</div><div><div class="author-name">Aman Gupta</div></div></div></div>
+        <div class="test"><div class="test-quote">“</div><p class="test-text">My son was scared of dentists. Doctor handled him so well, now he asks to visit! Very gentle with kids.</p><div class="test-author"><div class="author-ava">P</div><div><div class="author-name">Priya Das</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="label">Contact Us</div>
+        <h2 class="title">Book Your <em>Appointment</em></h2>
+        <p class="text">Ready for a healthier smile? Call, WhatsApp or visit us in Jorhat, Assam.</p>
+        <div style="margin-top:3rem">
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Address</div><div class="contact-val">Jorhat, Assam 785001<br><a href="https://share.google/6vwtRUghKhJHPDRz4" target="_blank">View on Google Maps</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-val"><a href="tel:+916306254991">+91 63062 54991</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Timings</div><div class="contact-val">Mon-Sat: 10 AM - 8 PM<br>Sunday: By Appointment</div></div></div>
+        </div>
+      </div>
+      <form class="form" onsubmit="event.preventDefault();alert('Thanks! We will WhatsApp you shortly.');">
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Service Needed</label><select class="form-input"><option>Teeth Cleaning</option><option>Dental Implants</option><option>Braces</option><option>Teeth Whitening</option><option>Root Canal</option><option>Cosmetic Dentistry</option></select></div>
+        <button type="submit" class="btn" style="width:100%;cursor:pointer">Request Callback</button>
+      </form>
+    </div>
+  </section>
+
+  <a href="https://wa.me/916306254991" class="whatsapp" target="_blank">💬</a>
+  <footer>© 2026 Dr. Teeth Dental Clinic, Jorhat. Best dental clinic in Jorhat, Assam.</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+  });
+  document.querySelectorAll('a, button, .service').forEach(el => {
+    el.onmouseenter = () => document.body.classList.add('cursor-hover');
+    el.onmouseleave = () => document.body.classList.remove('cursor-hover');
+  });
+  window.onscroll = () => document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
